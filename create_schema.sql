@@ -96,8 +96,7 @@ CREATE TABLE time_blocks(
 DROP TABLE IF EXISTS workgroup;
 CREATE TABLE workgroup(
     name varchar(255) NOT NULL,
-    PRIMARY KEY (name),
-    ON UPDATE CASCADE ON DELETE RESTRICT
+    PRIMARY KEY (name)
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 --Table structure for institute
@@ -110,8 +109,7 @@ CREATE TABLE institute(
     postal_code mediumin(8) unsigned NOT NULL,
     city varchar(255) NOT NULL,
     short_name varchar(88) NOT NULL,
-    PRIMARY KEY (institute_id),
-    ON UPDATE CASCADE ON DELETE RESTRICT
+    PRIMARY KEY (institute_id)
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 --Table structure for role
@@ -119,8 +117,7 @@ CREATE TABLE institute(
 DROP TABLE IF EXISTS role;
 CREATE TABLE role(
     name varchar(88) NOT NULL,
-    PRIMARY KEY (name),
-    ON UPDATE CASCADE ON DELETE RESTRICT
+    PRIMARY KEY (name)
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 
@@ -130,8 +127,7 @@ CREATE TABLE role(
 DROP TABLE IF EXISTS category;
 CREATE TABLE category(
     name varchar(88) NOT NULL,
-    PRIMARY KEY (name),
-    ON UPDATE CASCADE ON DELETE RESTRICT
+    PRIMARY KEY (name)
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 --Table structure for project(domain/cv). I have no idea how they use projects
@@ -140,8 +136,7 @@ CREATE TABLE category(
 DROP TABLE IF EXISTS projects;
 CREATE TABLE projects(
     name varchar(88) NOT NULL,
-    PRIMARY KEY (name),
-    ON UPDATE CASCADE ON DELETE RESTRICT
+    PRIMARY KEY (name)
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 
