@@ -39,7 +39,8 @@ DROP TABLE IF EXISTS resources;
 CREATE TABLE resources(
     resource_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
     name varchar(85) NOT NULL,
-    description varchar(255) NOT NULL,
+    descr varchar(255) NOT NULL,
+    short_desc varchar(88) NOT NULL,
     restricted TINYINT(1) NOT NULL,
     PRIMARY KEY(resource_id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8;
@@ -89,4 +90,59 @@ CREATE TABLE time_blocks(
       ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
---Table strucutre for
+
+--Table strucutre for arbeitsgruppe
+--this is basically a domain/cv. Many users can belong to one arbeitsgruppe
+DROP TABLE IF EXISTS workgroup;
+CREATE TABLE workgroup(
+    name varchar(255) NOT NULL,
+    PRIMARY KEY (name),
+    ON UPDATE CASCADE ON DELETE RESTRICT
+)ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+
+--Table structure for institute
+--every user belongs to one institute
+DROP TABLE IF EXISTS institute;
+CREATE TABLE institute(
+    institute_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+    name varchar(255) NOT NULL,
+    street varchar(255) NOT NULL,
+    postal_code mediumin(8) unsigned NOT NULL,
+    city varchar(255) NOT NULL,
+    short_name varchar(88) NOT NULL,
+    PRIMARY KEY (institute_id),
+    ON UPDATE CASCADE ON DELETE RESTRICT
+)ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+
+--Table structure for role
+-- users can have different roles. Are they external, internal something else
+DROP TABLE IF EXISTS role;
+CREATE TABLE role(
+    name varchar(88) NOT NULL,
+    PRIMARY KEY (name),
+    ON UPDATE CASCADE ON DELETE RESTRICT
+)ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+
+
+--Table structure for Kategorie (domain/cv). I have no better name yet.
+--is a user  advanced, novice,admin etc. for a resource/device.
+
+DROP TABLE IF EXISTS category;
+CREATE TABLE category(
+    name varchar(88) NOT NULL,
+    PRIMARY KEY (name),
+    ON UPDATE CASCADE ON DELETE RESTRICT
+)ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+
+--Table structure for project(domain/cv). I have no idea how they use projects
+--so far, but there are users with projects.
+
+DROP TABLE IF EXISTS projects;
+CREATE TABLE projects(
+    name varchar(88) NOT NULL,
+    PRIMARY KEY (name),
+    ON UPDATE CASCADE ON DELETE RESTRICT
+)ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+
+
+
