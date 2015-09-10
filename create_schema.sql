@@ -106,7 +106,7 @@ CREATE TABLE institute(
     institute_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
     street varchar(255) NOT NULL,
-    postal_code mediumin(8) unsigned NOT NULL,
+    postal_code mediumint(8) unsigned NOT NULL,
     city varchar(255) NOT NULL,
     short_name varchar(88) NOT NULL,
     PRIMARY KEY (institute_id)
