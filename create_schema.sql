@@ -26,11 +26,21 @@ CREATE TABLE usergroups(
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
     user_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-    liferay_user_id mediumint(8) NOT NULL,
-    usergroup_id mediumint(8) unsigned NOT NULL,
+    name varchar(255) NOT NULL,
+    workgroup varchar(255) NOT NULL,
+    institute_id mediumint(8) unsigned NOT NULL,
+    email varchar(255) NOT NULL,
+    role varchar(255) NOT NULL,
+    phone varchar(255) NOT NULL,
     PRIMARY KEY(user_id),
-    FOREIGN KEY (usergroup_id)
-        REFERENCES usergroups(usergroup_id)
+    FOREIGN KEY(workgroup)
+        REFERENCES workgroup(name)
+        ON UPDATE CASCADE ON DELETE RESTRICT,
+    FOREIGN KEY(institute_id)
+    REFERENCES institute(institute_id)
+        ON UPDATE CASCADE ON DELETE RESTRICT,
+    FOREIGN KEY(role)
+    REFERENCES role(name)
         ON UPDATE CASCADE ON DELETE RESTRICT
     )ENGINE=INNODB  DEFAULT CHARACTER SET utf8;
 
@@ -106,7 +116,7 @@ CREATE TABLE institute(
     institute_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
     street varchar(255) NOT NULL,
-    postal_code mediumint(8) unsigned NOT NULL,
+    postal_code varchar(16) NOT NULL,
     city varchar(255) NOT NULL,
     short_name varchar(88) NOT NULL,
     PRIMARY KEY (institute_id)
