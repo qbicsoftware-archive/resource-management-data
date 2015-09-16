@@ -150,4 +150,18 @@ CREATE TABLE projects(
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 
-
+--Table for physical time slots of a machine.
+--
+DROP TABLE IF EXISTS physical_time_blocks;
+CREATE TABLE physical_time_blocks(
+    id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+    resource_id mediumint(8) unsigned NOT NULL,
+    resource_user_name varchar(255) NOT NULL,
+    resource_specific_id varchar(88) NOT NULL,
+    start_time DATETIME,
+    end_time DATETIME,
+    PRIMARY KEY (id),
+    FOREIGN KEY (resource_id)
+        REFERENCES resources(resource_id)
+        ON UPDATE CASCADE ON DELETE RESTRICT
+)ENGINE=INNODB DEFAULT CHARACTER SET utf8;
