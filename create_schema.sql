@@ -10,14 +10,12 @@ SET foreign_key_checks = 0;
 
 -- Table structure for user groups or roles. Maybe it is not needed, as this
 -- information might be saved in liferay as well
-
 DROP TABLE IF EXISTS usergroups;
 CREATE TABLE usergroups(
-    usergroup_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-    type varchar(85),
-    PRIMARY KEY (usergroup_id)
-) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+        name varchar(85) NOT NULL,
+        PRIMARY KEY (name)
 
+) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 
 -- Table structre for users. Contains liferayUserId
