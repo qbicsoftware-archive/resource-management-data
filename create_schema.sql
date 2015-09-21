@@ -163,3 +163,18 @@ CREATE TABLE physical_time_blocks(
         REFERENCES resources(resource_id)
         ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+
+--Table structure for group, resource, cost relationship
+DROP TABLE IF EXISTS group_resource_cost;
+CREATE TABLE group_resource_cost(
+    usergroup varchar(85) NOT NULL,
+    resource_id mediumint(8) unsigned NOT NULL,
+    cost float(2) unsigned NOT NULL,
+    PRIMARY KEY(usergroup,resource_id),
+    FOREIGN KEY(usergroup)
+        REFERENCES usergroups(name)
+        ON UPDATE CASCADE ON DELETE RESTRICT,
+    FOREIGN KEY(resource_id)
+    REFERENCES resources(resource_id)
+        ON UPDATE CASCADE ON DELETE RESTRICT
+)ENGINE=INNODB DEFAULT CHARACTER SET utf8;
