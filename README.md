@@ -1,10 +1,10 @@
 #facs_documents
 
 Documents and database schema for the [resource management
-project](https://github.com/qbicsoftware/TODO).
+project](https://github.com/qbicsoftware/resource-management).
 
 #Quick Setup
-<code>git clone https://github.com/qbicsoftware/TODO.git</code>
+<code>git clone https://github.com/qbicsoftware/resource-management-data.git</code>
 
 ##Initialize the database
 Install mysql or mariadb.
