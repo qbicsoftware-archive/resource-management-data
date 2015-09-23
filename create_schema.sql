@@ -1,7 +1,7 @@
 
 -- for informations about foreign key on update and on delete see:
 -- http://stackoverflow.com/a/6720458
---BOOL,BOOLEAN These types are synonyms for TINYINT(1). A value of zero is considered false. Nonzero values are considered
+-- BOOL,BOOLEAN These types are synonyms for TINYINT(1). A value of zero is considered false. Nonzero values are considered
 
 -- Mysql specific instruction that disables the check of the foreign keys
 -- constraints
@@ -19,7 +19,7 @@ CREATE TABLE usergroups(
 
 
 -- Table structre for users. Contains liferayUserId
---blocked: do we need a boolean to see block and unblock certain users ??
+-- blocked: do we need a boolean to see block and unblock certain users ??
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
@@ -42,7 +42,7 @@ CREATE TABLE users(
         ON UPDATE CASCADE ON DELETE RESTRICT
     )ENGINE=INNODB  DEFAULT CHARACTER SET utf8;
 
---Table structure for Resource/device(s) of the facs facility
+-- Table structure for Resource/device(s) of the facs facility
 DROP TABLE IF EXISTS resources;
 CREATE TABLE resources(
     resource_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -54,7 +54,7 @@ CREATE TABLE resources(
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8;
 
 
---Table structure for kostenstelle, prices depend on that thing I suppose
+-- Table structure for kostenstelle, prices depend on that thing I suppose
 DROP TABLE IF EXISTS cost_locations;
 CREATE TABLE cost_locations(
     cost_location_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -64,7 +64,7 @@ CREATE TABLE cost_locations(
 )ENGINE=InnoDB DEFAULT CHARACTER SET utf8;
 
 
---This table will link a user with a kostenstelle
+-- This table will link a user with a kostenstelle
 DROP TABLE IF EXISTS users_cost_locations_junction;
 CREATE TABLE users_cost_locations_junction(
     user_id mediumint(8) unsigned NOT NULL,
@@ -79,8 +79,8 @@ CREATE TABLE users_cost_locations_junction(
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 
---Table structure for a time block/event. every resource can have many time
---blocks.
+-- Table structure for a time block/event. every resource can have many time
+-- blocks.
 DROP TABLE IF EXISTS time_blocks;
 CREATE TABLE time_blocks(
     block_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -99,16 +99,16 @@ CREATE TABLE time_blocks(
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 
---Table strucutre for arbeitsgruppe
---this is basically a domain/cv. Many users can belong to one arbeitsgruppe
+-- Table strucutre for arbeitsgruppe
+-- this is basically a domain/cv. Many users can belong to one arbeitsgruppe
 DROP TABLE IF EXISTS workgroup;
 CREATE TABLE workgroup(
     name varchar(255) NOT NULL,
     PRIMARY KEY (name)
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
---Table structure for institute
---every user belongs to one institute
+-- Table structure for institute
+-- every user belongs to one institute
 DROP TABLE IF EXISTS institute;
 CREATE TABLE institute(
     institute_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -120,7 +120,7 @@ CREATE TABLE institute(
     PRIMARY KEY (institute_id)
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
---Table structure for role
+-- Table structure for role
 -- users can have different roles. Are they external, internal something else
 DROP TABLE IF EXISTS role;
 CREATE TABLE role(
@@ -129,8 +129,8 @@ CREATE TABLE role(
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 
---Table structure for Kategorie (domain/cv). I have no better name yet.
---is a user  advanced, novice,admin etc. for a resource/device.
+-- Table structure for Kategorie (domain/cv). I have no better name yet.
+-- is a user  advanced, novice,admin etc. for a resource/device.
 
 DROP TABLE IF EXISTS category;
 CREATE TABLE category(
@@ -138,8 +138,8 @@ CREATE TABLE category(
     PRIMARY KEY (name)
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
---Table structure for project(domain/cv). I have no idea how they use projects
---so far, but there are users with projects.
+-- Table structure for project(domain/cv). I have no idea how they use projects
+-- so far, but there are users with projects.
 
 DROP TABLE IF EXISTS projects;
 CREATE TABLE projects(
@@ -148,8 +148,7 @@ CREATE TABLE projects(
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 
---Table for physical time slots of a machine.
---
+-- Table for physical time slots of a machine.
 DROP TABLE IF EXISTS physical_time_blocks;
 CREATE TABLE physical_time_blocks(
     id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -164,7 +163,7 @@ CREATE TABLE physical_time_blocks(
         ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
---Table structure for group, resource, cost relationship
+-- Table structure for group, resource, cost relationship
 DROP TABLE IF EXISTS group_resource_cost;
 CREATE TABLE group_resource_cost(
     usergroup varchar(85) NOT NULL,
