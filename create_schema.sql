@@ -178,3 +178,19 @@ CREATE TABLE group_resource_cost(
     REFERENCES resources(resource_id)
         ON UPDATE CASCADE ON DELETE RESTRICT
 )ENGINE=INNODB DEFAULT CHARACTER SET utf8;
+
+--Table structure for user, usergroup  relationship
+-- Each user can only belong to one usergroup, as it determines how much he/she
+-- pays for usage of resources
+DROP TABLE IF EXISTS user_usergroup;
+CREATE TABLE user_usergroup(
+    usergroup varchar(85) NOT NULL,
+    user_id mediumint(8) unsigned NOT NULL,
+    PRIMARY KEY(usergroup,user_id),
+    FOREIGN KEY(usergroup)
+        REFERENCES usergroups(name)
+        ON UPDATE CASCADE ON DELETE RESTRICT,
+    FOREIGN KEY(user_id)
+    REFERENCES users(user_id)
+        ON UPDATE CASCADE ON DELETE RESTRICT
+)ENGINE=INNODB DEFAULT CHARACTER SET utf8;
